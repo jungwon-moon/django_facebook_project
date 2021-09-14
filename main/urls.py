@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from facebook.views import play
-from facebook.views import play2
-from facebook.views import my_profile
+from facebook.views import play, play2, my_profile, event
+from facebook.views import fail, help, warn
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('play/', play),
     path('play2/', play2),
     path('/profile/', my_profile),
+    path('event/', event),
+    path('fail/', fail),
+    path('help/', help),
+    path('warn/', warn),
 ]
