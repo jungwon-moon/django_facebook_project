@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from facebook.views import play, play2, my_profile, event
 from facebook.views import fail, help, warn
-from facebook.views import newsfeed
+from facebook.views import newsfeed, detail_feed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +29,5 @@ urlpatterns = [
     path('help/', help),
     path('warn/', warn),
     path('', newsfeed),
+    path('feed/<pk>/', detail_feed),
 ]

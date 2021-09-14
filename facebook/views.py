@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from facebook.models import Article
 
 # Create your views here.
 count = 0
@@ -60,4 +61,10 @@ def warn(request):
 
 
 def newsfeed(request):
-    return render(request, 'newsfeed.html')
+    articles = Article.objects.all()
+    return render(request, 'newsfeed.html', {'articles': articles})
+
+
+def detail_feed(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'detail_feed.html', {'feed': article})

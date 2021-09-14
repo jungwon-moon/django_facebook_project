@@ -120,6 +120,16 @@
             margin: 7px 0;
             padding: 12px;
         }
+
+        .more {
+            font-size: 12px;
+            color: #6184dddd;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
     </style>
     <div class="header">
         <div class="btn1"><img src="/static/ic_pencil.jpg" width="22px" style="margin: 9px 0 0 13px"></div>
@@ -129,66 +139,19 @@
         <div class="btn2"><img src="/static/ic_info.jpg" width="22px" style="margin: 9px 0 0 13px"></div>
     </div>
     <div class="container">
+        {% for feed in articles %}
         <div class="feed">
-            <h3 class="name">이름</h3>
-            <div class="date">날짜</div>
-            <a class="title">글 제목</a>
-            <p class="content">글 내용</p>
+            <h3 class="name">{{ feed.author }}</h3>
+            <div class="date">{{ feed.created_at }}</div>
+            <a class="title">{{ feed.title }}</a>
+            <p class="content">{{ feed.text }}<a class="more" href="/feed/{{ feed.pk }}"> 더 보기</a></p>
             <div class="accessory">
-                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px">
-                Comments
+                <img src="/static/ic_like.jpg" width="16px"> Like
+                <a class="comments" href="/feed/{{ feed.pk }}/"><img src="/static/ic_comment.jpg" width="16px">
+                    Comments</a>
             </div>
         </div>
-        <div class="feed">
-            <h3 class="name">이름</h3>
-            <div class="date">날짜</div>
-            <a class="title">글 제목</a>
-            <p class="content">글 내용</p>
-            <div class="accessory">
-                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px">
-                Comments
-            </div>
-        </div>
-        <div class="feed">
-            <h3 class="name">이름</h3>
-            <div class="date">날짜</div>
-            <a class="title">글 제목</a>
-            <p class="content">글 내용</p>
-            <div class="accessory">
-                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px">
-                Comments
-            </div>
-        </div>
-        <div class="feed">
-            <h3 class="name">이름</h3>
-            <div class="date">날짜</div>
-            <a class="title">글 제목</a>
-            <p class="content">글 내용</p>
-            <div class="accessory">
-                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px">
-                Comments
-            </div>
-        </div>
-        <div class="feed">
-            <h3 class="name">이름</h3>
-            <div class="date">날짜</div>
-            <a class="title">글 제목</a>
-            <p class="content">글 내용</p>
-            <div class="accessory">
-                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px">
-                Comments
-            </div>
-        </div>
-        <div class="feed">
-            <h3 class="name">이름</h3>
-            <div class="date">날짜</div>
-            <a class="title">글 제목</a>
-            <p class="content">글 내용</p>
-            <div class="accessory">
-                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px">
-                Comments
-            </div>
-        </div>
+        {% endfor %}
     </div>
     </div>
     <div class="footer">

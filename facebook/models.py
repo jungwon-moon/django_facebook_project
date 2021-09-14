@@ -12,6 +12,7 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
 class Page(models.Model):
     master = models.CharField(max_length=120)
     name = models.CharField(max_length=120)
