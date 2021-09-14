@@ -39,7 +39,7 @@ def event(request):
     else:
         status = '청소년'
 
-    if count % 2 is 1:
+    if count % 2 == 1:
         lottery = "당첨"
     else:
         lottery = "꽝!!"
