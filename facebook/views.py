@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from facebook.models import Article, Page
 
 # Create your views here.
@@ -76,4 +76,14 @@ def pages(request):
 
 
 def new_feed(request):
+    if request.method == 'POST':
+        if request.POST['author'] != '' and request.POST['title'] != '' and \
+                request.POST['content'] != '' and request.POST['password'] != '':
+            new_article = Article.objects.create(
+                author=request.POST['author'],
+                title=request.POST['title'],
+                text=request.POST['content'],
+                password=request.POST['password']
+            )
+            return redirect(f'/feed/{new_article.pk }')
     return render(request, 'new_feed.html')
