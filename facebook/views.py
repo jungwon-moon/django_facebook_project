@@ -87,3 +87,13 @@ def new_feed(request):
             )
             return redirect(f'/feed/{new_article.pk }')
     return render(request, 'new_feed.html')
+
+
+def remove_feed(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'remove_feed.html', {'feed': article})
+
+
+def edit_feed(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'edit_feed.html', {'feed': article})
