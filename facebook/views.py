@@ -96,6 +96,8 @@ def remove_feed(request, pk):
         if request.POST['password'] == article.password:
             article.delete()
             return redirect('/')
+        else:
+            return redirect('/fail/')
 
     return render(request, 'remove_feed.html', {'feed': article})
 
@@ -110,5 +112,7 @@ def edit_feed(request, pk):
             article.text = request.POST['content']
             article.save()
             return redirect(f'/feed/{ article.pk }')
-            
+        else:
+            return redirect('/fail/')
+
     return render(request, 'edit_feed.html', {'feed': article})
