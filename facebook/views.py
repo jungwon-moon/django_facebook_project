@@ -116,3 +116,9 @@ def edit_feed(request, pk):
             return redirect('/fail/')
 
     return render(request, 'edit_feed.html', {'feed': article})
+
+
+def new_page(request):
+    
+    return render(request, 'new_page.html')
+
