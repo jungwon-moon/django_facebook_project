@@ -1,0 +1,96 @@
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #d7d8dc;
+            padding-bottom: 50px;
+            padding-top: 8px;
+        }
+
+        .header {
+            background-color: #475d9f;
+            color: #fff;
+            height: 42px;
+            border-bottom: 1px solid #2c3863;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .btn1 {
+            position: absolute;
+            left: 0px;
+        }
+
+        .search {
+            position: absolute;
+            left: 50px;
+            right: 50px;
+        }
+
+        .searchbar {
+            border: 1px solid #2c3863;
+            background-color: #323f6b;
+            width: 100%;
+            border-radius: 4px;
+            padding: 6px;
+            margin-top: 7px;
+            color: #ffffff;
+        }
+
+        .btn2 {
+            position: absolute;
+            right: 10px;
+        }
+
+        .form_box {
+            background-color: #ffffff;
+            margin: 50px 10px;
+            border-radius: 4px;
+            border: 4px solid #ddd;
+            padding: 10px;
+        }
+
+        .input_field {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 3px 0;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .write_button {
+            background-color: #475d9f;
+            border: 1px solid #323f6b;
+            color: #ffffff;
+            border-radius: 4px;
+            padding: 2px 8px;
+            margin: 3px 0;
+            font-size: 16px;
+        }
+    </style>
+    <div class="header">
+        <div class="btn1"><a href="/new"><img src="/static/ic_pencil.jpg" width="22px" style="margin: 9px 0 0 13px"></a>
+        </div>
+        <div class="search">
+            <input type="text" class="searchbar" placeholder="Search">
+        </div>
+        <div class="btn2"><img src="/static/ic_info.jpg" width="22px" style="margin: 9px 0 0 13px"></div>
+    </div>
+    <div class="container">
+        <div class="form_box">
+            <form method="POST">
+                {% csrf_token %}
+                <h3>{{ page.name }} - 페이지를 정말로 삭제하겠습니까?</h3>
+                <button class="write_button">삭제</button>
+            </form>
+        </div>
+    </div>
+</body>

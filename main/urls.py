@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from facebook.views import play, play2, my_profile, event, remove_feed
 from facebook.views import fail, help, warn
-from facebook.views import newsfeed, detail_feed, new_feed, pages
-from facebook.views import remove_feed, edit_feed
-from facebook.views import new_page
+from facebook.views import newsfeed, detail_feed, pages
+from facebook.views import new_feed, remove_feed, edit_feed
+from facebook.views import new_page, remove_page, edit_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,4 +40,7 @@ urlpatterns = [
 
     path('pages/', pages),
     path('pages/new/', new_page),
+    path('pages/<pk>/remove/', remove_page),
+    path('pages/<pk>/edit/', edit_page),
+
 ]

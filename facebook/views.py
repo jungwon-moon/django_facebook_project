@@ -119,6 +119,37 @@ def edit_feed(request, pk):
 
 
 def new_page(request):
-    
+    if request.method == 'POST':
+        new_page = Page.objects.create(
+            master=request.POST['master'],
+            name=request.POST['name'],
+            text=request.POST['text'],
+            category=request.POST['category']
+        )
+        return redirect('/pages/')
+
     return render(request, 'new_page.html')
 
+
+def remove_page(request, pk):
+    page = Page.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        page.delete()
+        return redirect('/pages/')
+
+    return render(request, 'remove_page.html', {'page': page})
+
+
+def edit_page(request, pk):
+    page = Page.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        page.master = request.POST['master']
+        page.name = request.POST['name']
+        page.text = request.POST['text']
+        page.category = request.POST['category']
+        page.save()
+        return redirect('/pages/')
+
+    return render(request, 'edit_page.html', {'page': page})
