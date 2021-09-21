@@ -71,9 +71,9 @@ def detail_feed(request, pk):
     if request.method == 'POST':
         Comment.objects.create(
             article=article,
-            author=request.POST.get('author'),
-            text=request.POST.get('text'),
-            password=request.POST.get('password')
+            author=request.POST['nickname'],
+            text=request.POST['reply'],
+            password=request.POST['password']
         )
         return redirect(f'/feed/{ article.pk }')
     return render(request, 'detail_feed.html', {'feed': article})
