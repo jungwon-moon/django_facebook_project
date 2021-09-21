@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from facebook.models import Article, Page
+from facebook.models import Article, Comment, Page
 
 # Create your views here.
 count = 0
@@ -67,6 +67,15 @@ def newsfeed(request):
 
 def detail_feed(request, pk):
     article = Article.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        Comment.objects.create(
+            article=article,
+            author=request.POST.get('author'),
+            text=request.POST.get('text'),
+            password=request.POST.get('password')
+        )
+        return redirect(f'/feed/{ article.pk }')
     return render(request, 'detail_feed.html', {'feed': article})
 
 
