@@ -182,6 +182,11 @@
             padding: 3px 16px;
             border-radius: 2px;
         }
+
+        .help {
+            font-size: 14px;
+            color: #666;
+        }
     </style>
     <div class="header">
         <div class="btn1"><a href="/new"><img src="/static/ic_pencil.jpg" width="22px" style="margin: 9px 0 0 13px"></a>
@@ -206,8 +211,21 @@
         </div>
     </div>
     <div class="comment_list">
-        <div class="comment"><span class="name">코멘트 글쓴이</span> 코멘트 내용</div>
-        <div class="comment_date">코멘트 생성일 <a href="코멘트삭제주소"><img src="/static/ic_delete.png" height="16px"></a></div>
+        {% for comment in feed.comments.all %}
+        <div class="comment"><span class="name">{{ comment.author }}</span> {{comment.text }}</div>
+        <div class="comment_date">{{ comment.created_at }} <a href="코멘트삭제주소"><img src="/static/ic_delete.png"
+                    height="16px"></a></div>
+        {% endfor %}
+        <div class="form-wrapper">
+            <span class="help">Comments</span>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="author" placeholder="이름"><br>
+                <input type="password" name="password" placeholder="비밀번호"><br>
+                <textarea name="text" placeholder="코멘트 내용"></textarea>
+                <button type="submit">등록</button>
+            </form>
+        </div>
     </div>
     <div class="footer">
         <div class="tab1"><img src="/static/ic_feed.jpg" width="22px" style="margin-top: 15px"></div>
